@@ -1,16 +1,14 @@
 # Table Booking App: Find and reserve your table
 
-Table Booking is a simple, interactive web application built with HTML, CSS, and JavaScript. It allows users to quickly check availability and reserve a table by choosing their preferred date, time, and party size.
+Table Booking is a simple, interactive web application built with Python, Django, HTML, and CSS. It allows users to quickly check availability and reserve a table by choosing their preferred date, time, and party size.
 
 When you open the app, you can select your booking details and submit a reservation request. The app validates your inputs, provides clear feedback if anything is missing or incorrect, and confirms successful bookings on screen. It can also store booking data locally so you can revisit or review recent reservations from the same browser.
 
-The project was designed as part of the Code Institute Interactive Front-End Development module to demonstrate:
+The project was designed as part of the Code Institute curriculum to demonstrate:
 
-Responsive, mobile-first design
-DOM manipulation using JavaScript
-User interactivity and real-time feedback
-Local storage for saving booking information
-Clean, readable, beginner-friendly code
+- Responsive, mobile-first design
+- User interactivity and real-time feedback
+- Clean, readable, beginner-friendly code
 
 ---
 
@@ -77,7 +75,7 @@ Clean, readable, beginner-friendly code
 
 - To provide a clear and simple layout that makes it easy for users to create and review bookings.  
 - To apply responsive design principles so the booking interface works well on all devices.  
-- To produce clean, well-structured code that passes HTML, CSS, and JavaScript validators.  
+- To produce clean, well-structured code that passes HTML and CSS validators, as well as Django and Python code checks.  
 - To follow a mobile-first design approach, ensuring users can book comfortably on small screens.  
 - To make the website accessible, following best practices for colour contrast, labels, and instructions.  
 
@@ -125,7 +123,6 @@ Clean, readable, beginner-friendly code
 
 - HTML
 - CSS
-- JS
 - Python
 - Django
 
@@ -141,7 +138,6 @@ Clean, readable, beginner-friendly code
 - [Balsamiq](https://balsamiq.com/)
 - [W3C HTML Validation Service](https://validator.w3.org/)
 - [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
-- [JS Hint](https://jshint.com/)
 - [Responsive Design Checker](https://responsivedesignchecker.com/)
 - [WAVE Tool](https://wave.webaim.org/)
 - [Page Speed Insights](https://pagespeed.web.dev/)
