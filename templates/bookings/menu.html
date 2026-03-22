@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Menu | Restaurant Booking{% endblock %}
+
+{% block content %}
+  <h2>Our menu</h2>
+  <p>This is a very simple example menu.</p>
+
+  <ul class="menu-list">
+    {% for item in items %}
+      <li class="menu-item">
+        <div>
+          <strong>{{ item.name }}</strong>
+          <p>{{ item.description }}</p>
+        </div>
+        <span class="price">{{ item.price }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
+

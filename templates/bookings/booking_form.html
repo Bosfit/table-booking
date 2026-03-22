@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} | Restaurant Booking{% endblock %}
+
+{% block content %}
+  <h2>{{ title }}</h2>
+
+  <form method="post" class="form">
+    {% csrf_token %}
+
+    {{ form.non_field_errors }}
+
+    {% for field in form %}
+      <div class="form-row">
+        <label for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %}*{% endif %}</label>
+        {{ field }}
+        {% if field.errors %}
+          <div class="error">{{ field.errors|striptags }}</div>
+        {% endif %}
+      </div>
+    {% endfor %}
+
+    <button type="submit" class="btn primary">Save booking</button>
+  </form>
+{% endblock %}
+

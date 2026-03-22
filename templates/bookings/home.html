@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Home | Restaurant Booking{% endblock %}
+
+{% block content %}
+  <section class="hero">
+    <h2>Welcome to Little Bistro</h2>
+    <p>Book a cosy table for your next meal with just a few clicks.</p>
+    <a class="btn primary" href="{% url 'booking_create' %}">Book a table</a>
+  </section>
+{% endblock %}
+
