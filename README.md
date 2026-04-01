@@ -141,6 +141,7 @@ I changed the colour of the button by making it a darker blue so the white text 
 
 ### Images
 
+Favicon icons and logo used are from [Flaticon](https://www.flaticon.com/) 
 
 ### Responsiveness
 
@@ -171,7 +172,7 @@ I changed the colour of the button by making it a darker blue so the white text 
 ### Tools
 
 - [Github](https://github.com/)
-- [Balsamiq](https://balsamiq.com/)
+- [Adobe Illustrator](https://www.adobe.com/uk/)
 - [W3C HTML Validation Service](https://validator.w3.org/)
 - [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
 - [Responsive Design Checker](https://responsivedesignchecker.com/)
