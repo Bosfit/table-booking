@@ -71,3 +71,28 @@ class Booking(models.Model):
         if self.table and self.guests and self.guests > self.table.seats:
             raise ValidationError("Guests exceed the number of seats for this table.")
 
+        # We use this queryset to avoid checking against this same booking
+        # when the user edits an existing record.
+        same_slot_bookings = Booking.objects.filter(
+            booking_date=self.booking_date,
+            booking_time=self.booking_time,
+        ).exclude(pk=self.pk)
+
+        # Stop double-booking the same table at the same date and time.
+        if self.table and same_slot_bookings.filter(table=self.table).exists():
+            raise ValidationError(
+                "This table is already booked for that date and time. "
+                "Please choose another table or time."
+            )
+
+        # If no table is selected, we keep a simple safety limit for each slot.
+        # This keeps the booking list realistic and easy for beginners to follow.
+        max_unassigned_bookings_per_slot = 5
+        if not self.table:
+            unassigned_in_slot = same_slot_bookings.filter(table__isnull=True).count()
+            if unassigned_in_slot >= max_unassigned_bookings_per_slot:
+                raise ValidationError(
+                    "This time slot is full for unassigned tables. "
+                    "Please pick a table or choose another time."
+                )
+
