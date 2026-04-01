@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Booking
+from .models import Booking, RestaurantTable
 
 
 class BookingForm(forms.ModelForm):
@@ -36,6 +36,12 @@ class BookingForm(forms.ModelForm):
         input_formats=["%H:%M"],
         widget=forms.Select(choices=TIME_SLOT_CHOICES),
     )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["table"].label = "Table preference"
+        self.fields["table"].queryset = RestaurantTable.objects.order_by("id")
+        self.fields["table"].empty_label = "Choose a table preference"
 
     class Meta:
         model = Booking
