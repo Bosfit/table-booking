@@ -119,8 +119,24 @@ Wireframes were designed using Adobe Illustrator (My balsamiq account expired). 
 
 ### Typography
 
+We chose Arial, a clean, sans-serif font with excellent readability. Its balanced letter spacing makes it ideal for both web and print. I used this font as it is common and used worldwide.
+
 
 ### Colour Scheme
+
+My goal for this is to make it very minimal and simple for users to be able to navigate and book a table without any distractions.
+
+![Colour Palette](docs/colour-palette.png)
+
+
+I tested it on [WAVE Tool](https://wave.webaim.org/) and had one contrast error as shown below.
+
+![Contrast Error](docs/contrast-error.png)
+
+
+I changed the colour of the button by making it a darker blue so the white text stands out more, when I tested it again, I had no contrast errors.
+
+![No Errors](docs/wave-testing.png)
 
 
 ### Images
