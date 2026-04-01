@@ -92,6 +92,26 @@ The project was designed as part of the Code Institute curriculum to demonstrate
 
 ## Wireframes
 
+Wireframes were designed using Adobe Illustrator (My balsamiq account expired). I designed it in mobile version, tablet version, laptop version. I showed the home page, booking page and menu page within the designs and how it looks in different screen sizes.
+
+<details>
+  <summary>Wireframe Desktop</summary>
+
+ ![Wireframe Desktop](docs/wireframe-laptop.jpg)
+</details>
+
+<details>
+  <summary>Wireframe Tablet</summary>
+
+![Wireframe Tablet](docs/wireframe-tablet-03.jpg)
+</details>
+
+<details>
+  <summary>Wireframe Mobile</summary>
+
+![Wireframe Mobile](docs/wireframe-mobile.jpg)
+</details>
+
 
 ---
 
