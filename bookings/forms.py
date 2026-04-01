@@ -16,6 +16,7 @@ class BookingForm(forms.ModelForm):
             "phone",
             "booking_date",
             "booking_time",
+            "table",
             "guests",
             "special_request",
         ]

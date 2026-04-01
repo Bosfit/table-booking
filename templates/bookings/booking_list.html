@@ -12,6 +12,7 @@
           <th>Name</th>
           <th>Date</th>
           <th>Time</th>
+          <th>Table</th>
           <th>Guests</th>
           <th>Actions</th>
         </tr>
@@ -22,6 +23,7 @@
             <td>{{ booking.name }}</td>
             <td>{{ booking.booking_date }}</td>
             <td>{{ booking.booking_time }}</td>
+            <td>{{ booking.table.name|default:"Not assigned" }}</td>
             <td>{{ booking.guests }}</td>
             <td>
               <a class="btn small" href="{% url 'booking_update' booking.pk %}">Edit</a>

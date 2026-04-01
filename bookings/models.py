@@ -3,6 +3,21 @@ from django.core.exceptions import ValidationError
 from django.utils import timezone
 
 
+class RestaurantTable(models.Model):
+    """
+    Simple table model to show a relationship between data types.
+    """
+
+    name = models.CharField(max_length=50, unique=True)
+    seats = models.PositiveIntegerField(default=2)
+
+    class Meta:
+        ordering = ["name"]
+
+    def __str__(self) -> str:
+        return f"{self.name} ({self.seats} seats)"
+
+
 class Booking(models.Model):
     """
     Very simple booking model for a restaurant.
@@ -13,6 +28,13 @@ class Booking(models.Model):
     phone = models.CharField(max_length=20, blank=True)
     booking_date = models.DateField()
     booking_time = models.TimeField()
+    table = models.ForeignKey(
+        RestaurantTable,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="bookings",
+    )
     guests = models.PositiveIntegerField()
     special_request = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -44,4 +66,8 @@ class Booking(models.Model):
         # guests must be at least 1
         if self.guests is not None and self.guests < 1:
             raise ValidationError("Guests must be at least 1.")
+
+        # if a table is selected, guests should fit that table
+        if self.table and self.guests and self.guests > self.table.seats:
+            raise ValidationError("Guests exceed the number of seats for this table.")
 
