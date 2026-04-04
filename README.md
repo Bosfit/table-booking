@@ -235,6 +235,7 @@ Django tests cover:
 - CSS
 - Python
 - Django
+- Windows PowerShell
 
 ### Libraries & Framework
 
@@ -338,20 +339,36 @@ I tested my CSS file and it came back with no errors.
 ![CSS Validation](docs/css-validation.png)
 
 
-#### DJANGO
+#### PYTHON AND DJANGO
 
 I tested my django files by using my own test files and using windows powershell to run it. It came back with no errors and it passed all the checks.
 
 ![DJANGO Validation](docs/django-validation.png)
 
 
-#### PYTHON
-
-
 ### Accessibility Testing
+
+As stated earlier, I tested it on [WAVE Tool](https://wave.webaim.org/) and had one contrast error as shown below.
+
+![Contrast Error](docs/contrast-error.png)
+
+
+I changed the colour of the button by making it a darker blue so the white text stands out more, when I tested it again, I had no contrast errors.
+
+![No Errors](docs/wave-testing.png)
 
 
 ### Performance Testing
+
+I used [PageSpeed Insights](https://pagespeed.web.dev/) to test the performance of my website that includes accessibility, best practices and SEO for both mobile and desktop.
+
+The accessibility, best practices, accessibility and SEO have came back all green with most of them being 100 out of 100 which I am happy about.
+
+Below is the screenshot of the stats and the some of the desktop and mobile testing:
+
+![Performance Testing Desktop](docs/performancetesting-desktop.png)
+
+![Performance Testing Mobile](docs/performancetesting-mobile.png)
 
 
 ### Browser Testing
