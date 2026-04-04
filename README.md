@@ -396,6 +396,18 @@ The booking table website was viewed and tested for bugs using a variety of brow
 
 ### User Story Testing
 
+The user stories below are the same ones listed in [User Stories](#user-stories). I checked each one against the live app and noted how the project supports it and how I tested it.
+
+| User story | How the project meets it | How I tested it | Result |
+|------------|----------------------------|-------------------|--------|
+| As a user, I want to see clear instructions so that I understand how to make a reservation. | The **Home** page has a welcome heading and short explanation; the nav labels (**Book a table**, **View bookings**, **Menu**) make the flow obvious. The booking form uses clear labels for each field. | Read the home page and followed the nav to the booking page; checked that text and labels explain what to do. | Pass |
+| As a user, I want to submit a booking quickly using a simple, easy-to-use form. | **Book a table** opens one form with name, email, phone, date (picker), time (dropdown), table preference, guests, and optional special request. One **Save booking** action submits it. | Filled the form with valid data and submitted; confirmed redirect and success message. | Pass |
+| As a user, I want my booking details to be saved locally so I can review them later in the same browser. | Bookings are stored in the **database** (not only in the browser). Users can open **View bookings** anytime to see saved reservations for the same site. | Created a booking, then opened **View bookings** in the same session; booking appeared in the list. Refreshed the page and the booking was still there. | Pass |
+| As a user, I want the app to work smoothly on both mobile and desktop so I can book from anywhere. | Layout is responsive (CSS, mobile-first approach). Navigation and forms stay usable on smaller widths. | Used Chrome DevTools device mode and resized the window; tested Home, booking form, and list on narrow and wide screens. | Pass |
+| As a user, I want to edit or cancel my booking details before confirming, in case I make a mistake. | **Before saving a new booking**, you can change any field on the form. **After saving**, you can **Edit** a booking or **Delete** it (with a confirmation step on the delete page). | Typed wrong details, corrected them before Save; after saving, used Edit and Delete and checked messages. | Pass |
+| As a user, I want to see instant feedback if a time slot is unavailable so I can choose another option. | The app blocks **double bookings** for the same date, time, and table preference, and limits how many **unassigned** bookings can share one slot. Django shows validation errors on the form when rules are broken. | Tried to book the same table, date, and time twice; tried invalid cases (e.g. past date, too many guests for the table). Error messages appeared and I could change date, time, or table. | Pass |
+
+**Summary:** Each user story is covered by the current features. Testing was done on the [deployed Heroku site](https://table-booking-1-c6df44805ddd.herokuapp.com/) and matched with the behaviour described in the [Features](#features) section.
 
 ## Deployment
 
