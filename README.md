@@ -173,11 +173,7 @@ Users can create a booking with:
 - number of guests
 - optional special request
 
-<details>
-  <summary>Booking Page</summary>
-
-  ![Booking Page](docs/booking-section.png)
-</details>
+![Booking Page](docs/booking-section.png)
 
 ### Booking management (CRUD)
 
@@ -195,21 +191,15 @@ Users can create a booking with:
 - If no table is selected, a simple per-slot limit applies so the restaurant is not overbooked for that time.
 - Success and error messages appear after create, update, and delete actions.
 
-<details>
-  <summary>Validation Page</summary>
+![Booking Page](docs/validation-page.png)
 
-  ![Booking Page](docs/validation-page.png)
-</details>
 
 ### Menu page
 
 - A simple menu page lists sample dishes with short descriptions and prices.
 
-<details>
-  <summary>Menu Page</summary>
+![Menu Page](docs/menu-section.png)
 
-  ![Menu Page](docs/menu-section.png)
-</details>
 
 ### Header
 
@@ -219,11 +209,8 @@ Users can create a booking with:
 
 - A custom **404** page is included for routes that do not exist, so users see a friendly message instead of a blank error.
 
-<details>
-  <summary>404 Page</summary>
+![404 Page](docs/404-page.png)
 
-  ![404 Page](docs/404-page.png)
-</details>
 
 ### Accessibility and usability
 
