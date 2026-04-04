@@ -145,14 +145,70 @@ Favicon icons and logo used are from [Flaticon](https://www.flaticon.com/)
 
 ### Responsiveness
 
+The website was designed using a mobile-first approach, ensuring optimal user experience on smaller screens before scaling up to larger devices.
+
 ## Features
 
+### Navigation and layout
+
+- Simple top navigation on every page: **Home**, **Book a table**, **View bookings**, and **Menu**.
+- Clean, responsive layout that works on desktop, tablet, and mobile.
+- Consistent styling and readable typography (Arial) across all pages.
+- Custom favicon from the `assets/favicon` folder shown in the browser tab.
+
+### Booking form
+
+Users can create a booking with:
+
+- name, email, phone
+- booking date (calendar picker)
+- booking time (dropdown of fixed time slots)
+- table preference (e.g. near window, quiet section, near bathroom, main dining area, or not bothered)
+- number of guests
+- optional special request
+
+### Booking management (CRUD)
+
+- **Create** — add a new booking from the booking form.
+- **Read** — view all bookings in a table on the bookings list page.
+- **Update** — edit an existing booking.
+- **Delete** — remove a booking after a confirmation step.
+
+### Validation and user feedback
+
+- Booking date cannot be in the past.
+- Guests must be at least one.
+- If a table preference is selected, guest count cannot exceed that table’s seat limit.
+- **Double-booking prevention** — the same date, time, and table cannot be booked twice.
+- If no table is selected, a simple per-slot limit applies so the restaurant is not overbooked for that time.
+- Success and error messages appear after create, update, and delete actions.
+
+### Menu page
+
+- A simple menu page lists sample dishes with short descriptions and prices.
 
 ### Header
 
+- Site title **Little Bistro** and navigation links are shown on every page for easy movement around the site.
 
-### 404 Page
+### 404 page
 
+- A custom **404** page is included for routes that do not exist, so users see a friendly message instead of a blank error.
+
+### Accessibility and usability
+
+- Button colours were adjusted for stronger contrast (checked with the WAVE tool).
+- Page language is set to UK English (`en-GB`).
+- Form fields are labelled clearly for easier use and screen reader support.
+
+### Automated tests
+
+Django tests cover:
+
+- model validation rules
+- conflict prevention (double booking and slot limits)
+- booking create, update, and delete flows
+- key pages returning a successful response (home, bookings list, booking form, menu)
 
 ## Technologies Used
 
