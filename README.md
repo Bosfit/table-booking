@@ -322,11 +322,30 @@ I manually tested the main user journeys on the [deployed site](https://table-bo
 
 #### HTML
 
+I used [W3C HTML Validation Service](https://validator.w3.org/) to test my HTML files.
+
+I tested my html fileS and it came back with no errors or warnings.
+
+![HTML Validation](docs/html-validation.png)
+
 
 #### CSS
 
+I used [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) to test my CSS files.
 
-#### JS
+I tested my CSS file and it came back with no errors.
+
+![CSS Validation](docs/css-validation.png)
+
+
+#### DJANGO
+
+I tested my django files by using my own test files and using windows powershell to run it. It came back with no errors and it passed all the checks.
+
+![DJANGO Validation](docs/django-validation.png)
+
+
+#### PYTHON
 
 
 ### Accessibility Testing
