@@ -373,6 +373,26 @@ Below is the screenshot of the stats and the some of the desktop and mobile test
 
 ### Browser Testing
 
+The booking table website was viewed and tested for bugs using a variety of browsers. I tested the website using Firefox, Google Chrome, and Microsoft Edge. I checked the console logs for each which there are not problems with it. The layout and look of the website on each browser looks good with no differences or problems.
+
+<details>
+  <summary>Browser Testing Chrome</summary>
+
+  ![Browser Testing Chrome](docs/browser-testing-chrome.png)
+</details>
+
+<details>
+  <summary>Browser Testing Microsoft Edge</summary>
+
+  ![Browser Testing Microsoft Edge](docs/browser-testing-edge.png)
+</details>
+
+<details>
+  <summary>Browser Testing Firefox</summary>
+
+  ![Browser Testing Firefox](docs/browser-testing-firefox.png)
+</details>
+
 
 ### User Story Testing
 
