@@ -302,6 +302,21 @@ Final Test Results
 
 ### Functionality Tests
 
+I manually tested the main user journeys on the [deployed site](https://table-booking-1-c6df44805ddd.herokuapp.com/) to confirm each feature behaves as expected.
+
+| # | Area | What I tested (steps) | Expected result | Pass / Fail |
+|---|------|------------------------|-----------------|-------------|
+| 1 | Home page | Open the site URL / click **Home** in the nav | Home page loads with welcome text and **Book a table** button | Pass |
+| 2 | Navigation | Click each nav link: **Home**, **Book a table**, **View bookings**, **Menu** | Each page loads with no broken links and the correct content | Pass |
+| 3 | Book a table — form | Go to **Book a table**, fill name, email, date, time, guests; choose **Table preference**; optional phone and special request | Form shows all fields; date uses a picker; time uses a dropdown; table is a dropdown | Pass |
+| 4 | Book a table — save | Complete valid details and click **Save booking** | Success message appears; booking appears on the list | Pass |
+| 5 | Book a table — validation | Try invalid input (e.g. past date, or guests higher than the table seats) | Clear error message; invalid booking is not saved | Pass |
+| 6 | View bookings | Open **View bookings** after creating a booking | New booking appears in the table with name, date, time, table, guests | Pass |
+| 7 | Edit booking | Click **Edit** on a booking, change details, save | Success message; list shows updated information | Pass |
+| 8 | Delete booking | Click **Delete**, confirm on the confirmation page | Booking removed from list; success message | Pass |
+| 9 | Menu | Open **Menu** | Menu items and prices display correctly | Pass |
+| 10 | Messages | After create / update / delete | Success or error messages show at the top when appropriate | Pass |
+| 11 | Responsive layout | Resize the browser (or use Chrome DevTools device mode) on Home, booking form, and list | Layout stays readable; nav and content remain usable | Pass |
 
 ### Code Validation
 
@@ -328,7 +343,17 @@ Final Test Results
 
 ## Deployment
 
+The Table Booking website was deployed early in the process using Heroku:
+
+The website is now live at [Little Bistro](https://table-booking-1-c6df44805ddd.herokuapp.com/)
+
+Any changes required to the website, they can be made, committed and pushed to GitHub.
+
   ---
   
 
 ## Credits
+
+- **Favicon Icons**: All favicon icons used in this project are from [Flaticon](https://www.flaticon.com/)
+
+I would like to thank everyone involved in this project for their help and advice.
