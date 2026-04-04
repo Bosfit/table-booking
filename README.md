@@ -2,7 +2,7 @@
 
 Table Booking is a simple, interactive web application built with Python, Django, HTML, and CSS. It allows users to quickly check availability and reserve a table by choosing their preferred date, time, and party size.
 
-When you open the app, you can select your booking details and submit a reservation request. The app validates your inputs, provides clear feedback if anything is missing or incorrect, and confirms successful bookings on screen. It can also store booking data locally so you can revisit or review recent reservations from the same browser.
+When you open the app, you can select your booking details and submit a reservation request. The app validates your inputs, provides clear feedback if anything is missing or incorrect, and confirms successful bookings on screen. Bookings are stored in the database so you can open **View bookings** anytime and see your reservations.
 
 The project was designed as part of the Code Institute curriculum to demonstrate:
 
@@ -27,6 +27,7 @@ The project was designed as part of the Code Institute curriculum to demonstrate
 - [Features](#features)
   - [Header](#header)
   - [404 Page](#404-page)
+- [Database schema](#database-schema)
 - [Technologies Used](#technologies-used)
   - [Languages](#languages)
   - [Libraries & Framework](#libraries-framework)
@@ -64,7 +65,7 @@ The project was designed as part of the Code Institute curriculum to demonstrate
 
 - As a user, I want to see clear instructions so that I understand how to make a reservation.  
 - As a user, I want to submit a booking quickly using a simple, easy-to-use form.  
-- As a user, I want my booking details to be saved locally so I can review them later in the same browser.  
+- As a user, I want my booking details to be saved so I can review them later (on the site).  
 - As a user, I want the app to work smoothly on both mobile and desktop so I can book from anywhere.  
 - As a user, I want to edit or cancel my booking details before confirming, in case I make a mistake.  
 - As a user, I want to see instant feedback if a time slot is unavailable so I can choose another option.  
@@ -207,10 +208,39 @@ Users can create a booking with:
 
 ### 404 page
 
-- A custom **404** page is included for routes that do not exist, so users see a friendly message instead of a blank error.
+- A custom **404** template (`templates/404.html`) is used when `DEBUG=False` (for example on Heroku), so unknown URLs show a friendly message and a **Go back home** link using the same layout as the rest of the site.
 
 ![404 Page](docs/404-page.png)
 
+
+### Database schema
+
+The app uses two main models (SQLite locally, PostgreSQL on Heroku via `DATABASE_URL`).
+
+### `RestaurantTable`
+
+| Field | Type | Notes |
+|-------|------|--------|
+| `id` | auto primary key | |
+| `name` | string (max 50), unique | Table preference label (e.g. “Near window”) |
+| `seats` | positive integer | Capacity for validation when guests pick this table |
+
+### `Booking`
+
+| Field | Type | Notes |
+|-------|------|--------|
+| `id` | auto primary key | |
+| `name` | string (max 100) | Guest name |
+| `email` | email | Contact |
+| `phone` | string (max 20), optional | |
+| `booking_date` | date | |
+| `booking_time` | time | Fixed slots from the form |
+| `table` | foreign key → `RestaurantTable`, optional | `null` = no preference |
+| `guests` | positive integer | Party size |
+| `special_request` | text, optional | |
+| `created_at` | datetime | Set automatically when created |
+
+**Relationship:** many bookings can reference one `RestaurantTable` (`Booking.table` → `RestaurantTable`). Validation rules (past dates, guest limits, double-booking, slot limits) are enforced in `Booking.clean()`.
 
 ### Accessibility and usability
 
@@ -226,6 +256,7 @@ Django tests cover:
 - conflict prevention (double booking and slot limits)
 - booking create, update, and delete flows
 - key pages returning a successful response (home, bookings list, booking form, menu)
+- custom 404 page when `DEBUG=False` (as on Heroku)
 
 ## Technologies Used
 
@@ -239,8 +270,6 @@ Django tests cover:
 
 ### Libraries & Framework
 
-- [Bootstrap](https://getbootstrap.com/)
-- [Google Fonts](https://fonts.google.com/)
 - [Flaticon](https://www.flaticon.com/free-icons)  
 
 ### Tools
@@ -402,7 +431,7 @@ The user stories below are the same ones listed in [User Stories](#user-stories)
 |------------|----------------------------|-------------------|--------|
 | As a user, I want to see clear instructions so that I understand how to make a reservation. | The **Home** page has a welcome heading and short explanation; the nav labels (**Book a table**, **View bookings**, **Menu**) make the flow obvious. The booking form uses clear labels for each field. | Read the home page and followed the nav to the booking page; checked that text and labels explain what to do. | Pass |
 | As a user, I want to submit a booking quickly using a simple, easy-to-use form. | **Book a table** opens one form with name, email, phone, date (picker), time (dropdown), table preference, guests, and optional special request. One **Save booking** action submits it. | Filled the form with valid data and submitted; confirmed redirect and success message. | Pass |
-| As a user, I want my booking details to be saved locally so I can review them later in the same browser. | Bookings are stored in the **database** (not only in the browser). Users can open **View bookings** anytime to see saved reservations for the same site. | Created a booking, then opened **View bookings** in the same session; booking appeared in the list. Refreshed the page and the booking was still there. | Pass |
+| As a user, I want my booking details to be saved so I can review them later (on the site). | Bookings are stored in the **database**. Users can open **View bookings** anytime to see saved reservations for the same site. | Created a booking, then opened **View bookings** in the same session; booking appeared in the list. Refreshed the page and the booking was still there. | Pass |
 | As a user, I want the app to work smoothly on both mobile and desktop so I can book from anywhere. | Layout is responsive (CSS, mobile-first approach). Navigation and forms stay usable on smaller widths. | Used Chrome DevTools device mode and resized the window; tested Home, booking form, and list on narrow and wide screens. | Pass |
 | As a user, I want to edit or cancel my booking details before confirming, in case I make a mistake. | **Before saving a new booking**, you can change any field on the form. **After saving**, you can **Edit** a booking or **Delete** it (with a confirmation step on the delete page). | Typed wrong details, corrected them before Save; after saving, used Edit and Delete and checked messages. | Pass |
 | As a user, I want to see instant feedback if a time slot is unavailable so I can choose another option. | The app blocks **double bookings** for the same date, time, and table preference, and limits how many **unassigned** bookings can share one slot. Django shows validation errors on the form when rules are broken. | Tried to book the same table, date, and time twice; tried invalid cases (e.g. past date, too many guests for the table). Error messages appeared and I could change date, time, or table. | Pass |
@@ -411,11 +440,32 @@ The user stories below are the same ones listed in [User Stories](#user-stories)
 
 ## Deployment
 
-The Table Booking website was deployed early in the process using Heroku:
+The site is deployed on **Heroku**. The live app is at [Little Bistro](https://table-booking-1-c6df44805ddd.herokuapp.com/).
 
-The website is now live at [Little Bistro](https://table-booking-1-c6df44805ddd.herokuapp.com/)
+### Environment variables (security)
 
-Any changes required to the website, they can be made, committed and pushed to GitHub.
+Secrets are **not** stored in the GitHub repository. They are set as **Config Vars** on Heroku (or in a local `.env` file for development — `.env` is listed in `.gitignore`).
+
+| Variable | Purpose |
+|----------|---------|
+| `SECRET_KEY` | Django signing key — required. Generate a long random string; never commit it. |
+| `DEBUG` | Set to `False` on Heroku so error pages are not exposed to visitors. |
+| `DATABASE_URL` | Provided automatically when you attach Heroku Postgres. |
+
+### Local development
+
+1. Copy `.env.example` to `.env` in the project root.
+2. Set `SECRET_KEY` (see the comment in `.env.example` for how to generate one).
+3. Set `DEBUG=True` in `.env` for detailed error pages while building the project.
+
+### Heroku (summary)
+
+1. Create a Heroku app and connect the GitHub repo (or use `git push heroku main`).
+2. In the Heroku dashboard: **Settings → Config Vars** — add `SECRET_KEY` and `DEBUG=False`.
+3. Add the **Heroku Postgres** add-on if needed; `DATABASE_URL` is set automatically.
+4. Deploy; the `Procfile` runs `release: python manage.py migrate` so the database is migrated on deploy.
+
+After changes: commit and push to GitHub, then deploy to Heroku as usual.
 
   ---
   

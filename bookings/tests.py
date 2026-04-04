@@ -1,7 +1,7 @@
 from datetime import time, timedelta
 
 from django.core.exceptions import ValidationError
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from django.urls import reverse
 from django.utils import timezone
 
@@ -168,3 +168,12 @@ class KeyPageResponseTests(TestCase):
     def test_menu_page_response(self):
         response = self.client.get(reverse("menu"))
         self.assertEqual(response.status_code, 200)
+
+
+class Custom404Tests(TestCase):
+    @override_settings(DEBUG=False)
+    def test_unknown_url_uses_custom_404_page(self):
+        response = self.client.get("/not-a-real-page/")
+        self.assertEqual(response.status_code, 404)
+        self.assertContains(response, "404", status_code=404)
+        self.assertContains(response, "Go back home", status_code=404)

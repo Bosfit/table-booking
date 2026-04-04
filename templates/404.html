@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Page not found | Restaurant Booking{% endblock %}
+
+{% block content %}
+  <section class="hero">
+    <h2>404</h2>
+    <p>Sorry, the page you’re looking for can’t be found.</p>
+    <a class="btn primary" href="{% url 'home' %}">Go back home</a>
+  </section>
+{% endblock %}
