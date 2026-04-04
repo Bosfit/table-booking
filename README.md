@@ -273,10 +273,44 @@ Django tests cover:
 
 ### Bugs
 
+One of the ways the website was tested was by using the console logs within Chrome if there are any errors. As shown in the image below, you can see that there are no bugs or errors within the google console.
+
+![Console Log](docs/console-log.png)
 
 
 ### Responsiveness Tests
 
+To test the responsiveness, I tested the deployed versions of the website using Chrome devtools and looked at how the website looks within different devices and sizes. Below is the result.
+
+<details>
+  <summary>Small Screen Responsiveness</summary>
+
+  ![404 Page](docs/mobile-responsiveness.png)
+</details>
+
+
+<details>
+  <summary>Medium Screen Responsiveness</summary>
+
+  ![404 Page](docs/tablet-responsiveness.png)
+</details>
+
+
+Final Test Results
+
+| Size | Device Example         | Navigation | Element Alignments | Content Placement | Functionality | Notes                                                        |
+|------|-----------------------|------------|--------------------|-------------------|---------------|--------------------------------------------------------------|
+| sm   | Samsung Galaxy S6     | Good       | Good               | Good              | Good          |                                                               
+| sm   | iPhone 6              | Good       | Good               | Good              | Good          |                                                              |
+| sm   | iPhone 13 PRO MAX     | Good       | Good               | Good              | Good          |                                                              |
+| md   | iPad MINI             | Good       | Good               | Good              | Good          |                                                              |
+| md   | Galaxy Tab S7         | Good       | Good               | Good              | Good          |                                                              |
+| md   | iPad Air              | Good       | Good               | Good              | Good          |                                                              |
+| lg   | iPad Pro              | Good       | Good               | Good              | Good          |                                                              |
+| xl   | Mackbook Air          | Good       | Good               | Good              | Good          |                                                              |
+| xl   | HP Stream Laptop      | Good       | Good               | Good              | Good          |                                                              |
+| xxl  | Dell Lattitude        | Good       | Good               | Good              | Good          |                                                              |
+| xxl  | Desktop               | Good       | Good               | Good              | Good          |                                                              |
 
 
 ### Functionality Tests
