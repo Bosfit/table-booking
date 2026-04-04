@@ -39,7 +39,7 @@ The project was designed as part of the Code Institute curriculum to demonstrate
   - [Code Validation](#code-validation)
     - [HTML](#html)
     - [CSS](#css)
-    - [JS](#js)
+    - [PYTHON AND DJANGO](#python-and-django)
   - [Accessibility Testing](#accessibility-testing)
   - [Performance Testing](#performance-testing)
   - [Browser Testing](#browser-testing)
